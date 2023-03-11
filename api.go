@@ -72,7 +72,7 @@ func (s *APIServer) handleTransfer(w http.ResponseWriter, r *http.Request) error
 	return nil
 }
 
-/////
+///////////
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {
 	w.Header().Set("Content-Type", "application/json")
