@@ -35,6 +35,7 @@ func (s *APIServer) Run() {
 	http.ListenAndServe(s.listenAddr, router)
 }
 
+// 498081
 func (s *APIServer) handleLogin(w http.ResponseWriter, r *http.Request) error {
 
 	if r.Method != "POST" {
@@ -46,6 +47,13 @@ func (s *APIServer) handleLogin(w http.ResponseWriter, r *http.Request) error {
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		return err
 	}
+
+	acc, err := s.store.GetAccountByNumber(int(req.Number))
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("%+%\n", acc)
 
 	return WriteJSON(w, http.StatusOK, req)
 }

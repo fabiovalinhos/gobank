@@ -10,3 +10,9 @@ https://hub.docker.com/_/postgres
 
 For rerun image
 docker start some-postgres(nome da image)
+
+Using psql inside container
+docker exec -it <container ID or container name> psql -U <project's name, in that case: postgres>
+
+ADD COLUMN in db
+ALTER TABLE account ADD COLUMN encrypted_password VARCHAR(50) NOT NULL DEFAULT('n/a');
